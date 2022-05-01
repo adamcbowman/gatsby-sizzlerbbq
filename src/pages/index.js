@@ -1,10 +1,11 @@
 import React from "react"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
-import Slider from "react-slick/lib/slider";
+// import Slider from "react-slick/lib/slider";
+import { StaticImage } from "gatsby-plugin-image";
 
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+
+
 
 const IndexPage = () => (
   <Layout>
@@ -18,7 +19,9 @@ const IndexPage = () => (
         on <span className="text-primary">Sizzler BBQ Catering.</span>
       </p>
       <div className="w-1/2">
-        <Slider
+        <StaticImage src="https://www.sizzlerbbq.com/gallery/gallery1.jpg" />
+
+        {/* <Slider
           dots={true}
           infinite={true}
           speed={500}
@@ -65,7 +68,7 @@ const IndexPage = () => (
           <div>
             <img src="https://www.sizzlerbbq.com/gallery/gallery9.jpg" />
           </div>
-        </Slider>
+        </Slider> */}
       </div>
       
         <h2 className="font-bold text-xl pt-6 self-start px-6">History</h2>
