@@ -1,13 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-
+import Seo from "../components/seo"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Slider from "react-slick/lib/slider";
+
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const IndexPage = () => (
   <Layout>
-    {/* <SEO title="Home" /> */}
+    <Seo title="Home" />
     <div className="flex flex-col items-center justify-center h-3/4">
       <p className="p-6 text-gray-900">
         Mobile Catering is our business. We service all of Atlantic Canada,
@@ -17,13 +19,55 @@ const IndexPage = () => (
         on <span className="text-primary">Sizzler BBQ Catering.</span>
       </p>
       <div className="w-1/2">
-        <StaticImage
+        {/* <StaticImage
           src="https://www.sizzlerbbq.com/gallery/gallery1.jpg"
           alt="Sizzler Trucks"
-        />
+        /> */}
+        <Slider
+          dots={true}
+          infinite={true}
+          speed={500}
+          slidesToShow={1}
+          slidesToScroll={1}
+          autoplay={true}
+          autoplaySpeed={5000}
+          arrows={false}
+          scrollSpeed={500}
+          draggable={true}
+          scrollable={true}
+        >
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery1.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery2.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery3.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery4.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery5.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery6.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery7.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery8.jpg" />
+          </div>
+          <div>
+            <img src="https://www.sizzlerbbq.com/gallery/gallery9.jpg" />
+          </div>
+        </Slider>
       </div>
-      <p className="p-6">
-        <span className="font-bold">History</span><br />
+      
+        <h2 className="font-bold text-xl pt-6 self-start px-6">History</h2>
+        <p className="p-6">
         In 1980 Herb and Janet were asked by the PEI Pork Board to cater an
         event, from that was born{" "}
         <span className="italic">"The Pork Sizzler"</span> known today as{" "}
