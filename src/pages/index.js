@@ -7,14 +7,14 @@ import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    {/* <SEO title="Home" /> */}
     <div className="flex flex-col items-center justify-center h-3/4">
       <p className="p-6 text-gray-900">
         Mobile Catering is our business. We service all of Atlantic Canada,
         providing delicious meals for small or large groups. Our business is
         built on dependability and quality. We have been serving Atlantic
-        Canadians since 1980. For all your indoor or out door functions, depend
-        on Sizzler BBQ Catering.
+        Canadians since 1980. For all your indoor or outdoor functions, depend
+        on <span className="text-primary">Sizzler BBQ Catering.</span>
       </p>
       <div className="w-1/2">
         <StaticImage
