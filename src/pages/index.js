@@ -1,5 +1,4 @@
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 import Slider from "react-slick/lib/slider";
@@ -19,10 +18,6 @@ const IndexPage = () => (
         on <span className="text-primary">Sizzler BBQ Catering.</span>
       </p>
       <div className="w-1/2">
-        {/* <StaticImage
-          src="https://www.sizzlerbbq.com/gallery/gallery1.jpg"
-          alt="Sizzler Trucks"
-        /> */}
         <Slider
           dots={true}
           infinite={true}
@@ -30,12 +25,19 @@ const IndexPage = () => (
           slidesToShow={1}
           slidesToScroll={1}
           autoplay={true}
-          autoplaySpeed={5000}
-          arrows={false}
-          scrollSpeed={500}
-          draggable={true}
-          scrollable={true}
+          autoplaySpeed={4000}
+
+          responsive={[
+            {
+              breakpoint: 1024,
+              settings: {
+                dots: false,
+              },
+            },
+          ]}
+
         >
+
           <div>
             <img src="https://www.sizzlerbbq.com/gallery/gallery1.jpg" />
           </div>
