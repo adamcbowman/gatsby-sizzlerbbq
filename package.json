@@ -6,6 +6,7 @@
   "author": "Kostas Vrouvas <hello@kosvrouvas.com>",
   "dependencies": {
     "autoprefixer": "^10.4.4",
+    "daisyui": "^2.14.3",
     "gatsby": "^4.11.2",
     "gatsby-plugin-google-analytics": "^4.0.0",
     "gatsby-plugin-image": "^2.5.2",

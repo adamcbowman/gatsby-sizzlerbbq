@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby TailwindCSS Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter with TailwindCSS and common dev tools. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@kosvrouvas`,
+    title: `Sizzler BBQ Catering`,
+    description: `Sizzler BBQ Catering is a family owned and operated business serving Atlantic Canada since 1980`,
+    author: `ACB Consulting`,
   },
   flags: {
     THE_FLAG: false
