@@ -21,9 +21,11 @@ const PriceCalc = () => {
     setChickenPork((e.target.value * 17).toFixed(2))
   }
   const handlePigRoast = e => {
+      e.target.value > 0 ? (
     e.target.value < 75
       ? setPigRoast(75 * 28.45)
       : setPigRoast((e.target.value * 28.45).toFixed(2))
+    ) : setPigRoast(0)
   }
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const PriceCalc = () => {
           <label htmlFor="group-size" className="p-2">
             Total Group Size
           </label>
-          <input type="number" id="group-size" className="w-32" />
+          <input type="number" id="group-size" className="w-32" defaultValue={0} onChange={setGroupSize}/>
         </div>
 
         <div className="flex items-center border justify-between">
@@ -64,6 +66,7 @@ const PriceCalc = () => {
             id="chickenPork"
             className="w-2/12"
             onChange={handleChickenPork}
+            defaultValue={0}
           />
           <p className="p-2">${chickenPork}</p>
         </div>
@@ -77,6 +80,7 @@ const PriceCalc = () => {
             id="steak"
             className="w-2/12"
             onChange={handleSteak}
+            defaultValue={0}
           />
           <p className="p-2">${steak}</p>
         </div>
@@ -90,6 +94,7 @@ const PriceCalc = () => {
             id="chicken"
             className="w-2/12"
             onChange={handleChicken}
+            defaultValue={0}
           />
           <p className="p-2">${chicken}</p>
         </div>
@@ -109,6 +114,7 @@ const PriceCalc = () => {
             id="pig-roast"
             className="w-2/12"
             onChange={handlePigRoast}
+            defaultValue={0}
           />
           <p className="p-2">${pigRoast}</p>
         </div>
