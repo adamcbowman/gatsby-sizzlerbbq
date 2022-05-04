@@ -10,16 +10,16 @@ import { StaticImage } from "gatsby-plugin-image";
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <div className="flex flex-col items-center justify-center h-3/4">
+    <div className="flex flex-col items-center justify-center h-3/4 text-justify">
       <p className="p-6 text-gray-900">
         Mobile Catering is our business. We service all of Atlantic Canada,
         providing delicious meals for small or large groups. Our business is
         built on dependability and quality. We have been serving Atlantic
         Canadians since 1980. For all your indoor or outdoor functions, depend
-        on <span className="text-primary">Sizzler BBQ Catering.</span>
+        on <em className="text-primary">Sizzler BBQ Catering.</em>
       </p>
       <div className="w-1/2">
-        <StaticImage src="https://www.sizzlerbbq.com/gallery/gallery1.jpg" />
+        <StaticImage src="https://www.sizzlerbbq.com/gallery/gallery1.jpg" className="rounded-lg opacity-95"/>
 
         {/* <Slider
           dots={true}
@@ -75,10 +75,10 @@ const IndexPage = () => (
         <p className="p-6">
         In 1980 Herb and Janet were asked by the PEI Pork Board to cater an
         event, from that was born{" "}
-        <span className="italic">"The Pork Sizzler"</span> known today as{" "}
-        <span className="italic text-primary">
+        <em>"The Pork Sizzler"</em> known today as{" "}
+        <em className="text-primary">
           Sizzler BBQ Catering Since 1980
-        </span>.
+        </em>.
       </p>
       <p className="px-6">
          As the popularity grew they added two more catering units to do more

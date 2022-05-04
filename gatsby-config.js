@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Sizzler BBQ Catering`,
     description: `Sizzler BBQ Catering is a family owned and operated business serving Atlantic Canada since 1980`,
-    author: `ACB Consulting`,
+    author: `adambowman.tech`,
   },
   flags: {
     THE_FLAG: false

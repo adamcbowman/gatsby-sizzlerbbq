@@ -76,7 +76,7 @@ function Seo({ description, lang, meta, title }) {
 Seo.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: `Sizzler BBQ Catering in PEI NB and NS Atantic Canada`,
 }
 
 Seo.propTypes = {
