@@ -4,12 +4,17 @@ import Seo from "../components/seo"
 import { useState } from "react"
 
 const PriceCalc = () => {
+    
   const [groupSize, setGroupSize] = useState(0)
   const [price, setPrice] = useState(0)
   const [steak, setSteak] = React.useState(0)
   const [chicken, setChicken] = React.useState(0)
   const [chickenPork, setChickenPork] = React.useState(0)
   const [pigRoast, setPigRoast] = React.useState(0)
+
+  const handleGroupSize = e => {
+    setGroupSize(e.target.value)
+  }
 
   const handleSteak = e => {
     setSteak((e.target.value * 16.45).toFixed(2))
@@ -21,11 +26,11 @@ const PriceCalc = () => {
     setChickenPork((e.target.value * 17).toFixed(2))
   }
   const handlePigRoast = e => {
-      e.target.value > 0 ? (
-    e.target.value < 75
-      ? setPigRoast(75 * 28.45)
-      : setPigRoast((e.target.value * 28.45).toFixed(2))
-    ) : setPigRoast(0)
+    e.target.value > 0
+      ? e.target.value < 75
+        ? setPigRoast(75 * 28.45)
+        : setPigRoast((e.target.value * 28.45).toFixed(2))
+      : setPigRoast(0)
   }
 
   useEffect(() => {
@@ -54,7 +59,13 @@ const PriceCalc = () => {
           <label htmlFor="group-size" className="p-2">
             Total Group Size
           </label>
-          <input type="number" id="group-size" className="w-32" defaultValue={0} onChange={setGroupSize}/>
+          <input
+            type="number"
+            id="group-size"
+            className="w-32"
+            defaultValue={0}
+            onChange={handleGroupSize}
+          />
         </div>
 
         <div className="flex items-center border justify-between">
@@ -118,6 +129,13 @@ const PriceCalc = () => {
           />
           <p className="p-2">${pigRoast}</p>
         </div>
+
+        {groupSize > 0 && groupSize < 100 ? (
+          <div className="flex flex-col items-center p-2 text-primary">
+            <p>Set Up fee applies to groups under 100</p>
+          </div>
+        ) : null}
+
         <div className="flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
             Total Cost
