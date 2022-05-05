@@ -2,6 +2,11 @@ import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { useState } from "react"
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
+// import {Helmet} from "react-helmet";
 
 const MenuForm = () => {
     
@@ -73,6 +78,18 @@ const MenuForm = () => {
     setAddress(e.target.value)
   }
 
+  // const handlePlaceChange = address => {
+  //   setAddress(address)
+  // }
+
+  // const handlePlaceSelect = address => {
+  //   geocodeByAddress(address)
+  //     .then(results => getLatLng(results[0]))
+  //     .then(latLng => console.log("Success", latLng))
+  //     .catch(error => console.error("Error", error))
+  // }
+  
+
   useEffect(() => {
     setPrice(
       (
@@ -80,7 +97,7 @@ const MenuForm = () => {
         parseFloat(chicken) +
         parseFloat(chickenPork) +
         parseFloat(pigRoast) + 
-        parseFloat(setupFee)
+        groupSize && groupSize > 0 ? parseFloat(setupFee) : 0
       ).toFixed(2)
     )
   }, [steak, chicken, chickenPork, pigRoast, setupFee])
@@ -96,14 +113,14 @@ const MenuForm = () => {
 
   return (
     <Layout>
-      <Seo title="Price Calculator" />
+      <Seo title="Menu Selection Form" />
 
       <div className="flex flex-col items-center p-6">
-        <h1 className="text-2xl font-bold text-primary">Price Calculator</h1>
+        <h1 className="text-2xl font-bold text-primary">Menu Selection Form</h1>
 
       </div>
       <div className="flex flex-col items-left">
-        <div className="flex items-center border p-4">
+        <div className="flex justify-between border">
           <label htmlFor="group-size" className="p-2">
             Group Size - Adults
           </label>
@@ -217,6 +234,49 @@ const MenuForm = () => {
             placeholder="Enter Address"
           />
         </div>
+
+        {/* <div className="flex items-center p-2">
+          <PlacesAutocomplete
+            value={address}
+            onChange={handlePlaceChange}
+            onSelect={handlePlaceSelect}
+          >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+              <div>
+                <input
+
+                  {...getInputProps({
+                    placeholder: "Search Places ...",
+                    className: "location-search-input"
+                  })}
+                />
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+
+                      ? "suggestion-item--active"
+                      : "suggestion-item";
+                    // inline style for demonstration purpose 
+                    const style = suggestion.active
+                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                      : { backgroundColor: "#ffffff", cursor: "pointer" };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
+        </div> */}
 
         <div className="flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
