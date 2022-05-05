@@ -25,7 +25,7 @@ const IndexPage = () => (
               <em className="text-primary">Sizzler BBQ Catering.</em>.
             </p>
             <Link to="/menu-form">
-              <button className="btn btn-primary">Book your BBQ</button>
+              <button className="btn btn-primary">Plan your BBQ</button>
             </Link>
 
             <div className="carousel w-full rounded-lg py-6">
