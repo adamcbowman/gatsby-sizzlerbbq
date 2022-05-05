@@ -6,11 +6,14 @@ import { useState } from "react"
 const PriceCalc = () => {
     
   const [groupSize, setGroupSize] = useState(0)
+  const [setupFee, setSetupFee] = useState(0)
+
   const [price, setPrice] = useState(0)
   const [steak, setSteak] = React.useState(0)
   const [chicken, setChicken] = React.useState(0)
   const [chickenPork, setChickenPork] = React.useState(0)
   const [pigRoast, setPigRoast] = React.useState(0)
+ 
 
   const handleGroupSize = e => {
     setGroupSize(e.target.value)
@@ -43,6 +46,15 @@ const PriceCalc = () => {
       ).toFixed(2)
     )
   }, [steak, chicken, chickenPork, pigRoast])
+
+  useEffect(() => {
+    setSetupFee(
+      (
+        groupSize < 100 ? (100 - groupSize) * 6 : 0
+      ).toFixed(2)
+    )
+  }, [groupSize])
+
 
   return (
     <Layout>
@@ -132,7 +144,7 @@ const PriceCalc = () => {
 
         {groupSize > 0 && groupSize < 100 ? (
           <div className="flex flex-col items-center p-2 text-primary">
-            <p>Set Up fee applies to groups under 100</p>
+            <p>Set Up Charge: ${setupFee}</p>
           </div>
         ) : null}
 
