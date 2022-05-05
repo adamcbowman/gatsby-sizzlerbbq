@@ -16,7 +16,7 @@ const navLinks = [
   },
   {
     name: "Service Outline Form",
-    link: "/service-form",
+    link: "/menu-form",
   },
   {
     name: "Contact",

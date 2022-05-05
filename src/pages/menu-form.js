@@ -3,9 +3,12 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { useState } from "react"
 
-const PriceCalc = () => {
+const MenuForm = () => {
     
   const [groupSize, setGroupSize] = useState(0)
+  const [children, setChildren] = useState(0)
+  const [infants, setInfants] = useState(0)
+  
   const [setupFee, setSetupFee] = useState(0)
 
   const [price, setPrice] = useState(0)
@@ -13,10 +16,18 @@ const PriceCalc = () => {
   const [chicken, setChicken] = React.useState(0)
   const [chickenPork, setChickenPork] = React.useState(0)
   const [pigRoast, setPigRoast] = React.useState(0)
+
+  const [address, setAddress] = useState("")
  
 
   const handleGroupSize = e => {
     setGroupSize(e.target.value)
+  }
+  const handleChildren = e => {
+    setChildren(e.target.value)
+  }
+  const handleInfants = e => {
+    setInfants(e.target.value)
   }
 
   const handleSteak = e => {
@@ -38,17 +49,16 @@ const PriceCalc = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const text = getFormDetailsText()
+    const menu = getFormDetailsText()
     //navigate to google form link
     window.open(
-    "https://docs.google.com/forms/d/e/1FAIpQLSe37aFLsm40IE2BC-DbHM6lFzSPXmU_2r2qFYyovJxMlqWSfA/viewform?usp=pp_url&entry.1533313772="+text,
-    "_blank"
+      `https://docs.google.com/forms/d/e/1FAIpQLScPbMBQmOkvIY0S96sWENhdbeOjS0FZNWVMmkLoRD-YK4bPjA/viewform?usp=pp_url&entry.1196405965=${address}&entry.1275003710=${groupSize}&entry.1857878523=${children}&entry.845645177=${infants}&entry.1605025492=${menu}`,
+      "_blank"
     )
   }
 
   const getFormDetailsText = () => {
-    let text = `
-    Group Size: ${groupSize}, 
+    let menu = `
     Steak: ${steak},  
     Chicken: ${chicken},  
     Chicken/Pork: ${chickenPork},  
@@ -56,10 +66,12 @@ const PriceCalc = () => {
     Setup Fee: ${setupFee},  
     Total: ${price}
       `
-    return text
+    return menu
   }
 
-
+  const handleLocation = e => {
+    setAddress(e.target.value)
+  }
 
   useEffect(() => {
     setPrice(
@@ -93,7 +105,7 @@ const PriceCalc = () => {
       <div className="flex flex-col items-left">
         <div className="flex items-center border p-4">
           <label htmlFor="group-size" className="p-2">
-            Group Size
+            Group Size - Adults
           </label>
           <input
             type="number"
@@ -101,6 +113,23 @@ const PriceCalc = () => {
             className="w-32"
             defaultValue={0}
             onChange={handleGroupSize}
+          /> 
+          <label htmlFor="children" className="p-2">Children (0-17)</label>
+          <input
+
+            type="number"
+            id="children"
+            className="w-32"
+            defaultValue={0}
+            onChange={handleChildren}
+          />
+          <label htmlFor="infants" className="p-2">Infants (0-2)</label>
+          <input
+            type="number"
+            id="infants"
+            className="w-32"
+            defaultValue={0}
+            onChange={handleInfants}
           />
         </div>
 
@@ -176,6 +205,19 @@ const PriceCalc = () => {
           
         ) : null}
 
+        <div className="flex items-center p-2">
+          <label htmlFor="location" className="p-2">
+            Location
+          </label>
+          <input
+            type="text"
+            id="location"
+            className="w-6/12"
+            onChange={handleLocation}
+            placeholder="Enter Address"
+          />
+        </div>
+
         <div className="flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
             Total Cost
@@ -188,4 +230,4 @@ const PriceCalc = () => {
   )
 }
 
-export default PriceCalc
+export default MenuForm
