@@ -2,10 +2,10 @@ import React, { useEffect } from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { useState } from "react"
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+// import PlacesAutocomplete, {
+//   geocodeByAddress,
+//   getLatLng,
+// } from 'react-places-autocomplete';
 // import {Helmet} from "react-helmet";
 
 const MenuForm = () => {
