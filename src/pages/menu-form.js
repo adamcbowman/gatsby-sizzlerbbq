@@ -231,7 +231,7 @@ const MenuForm = () => {
             id="location"
             className="w-6/12"
             onChange={handleLocation}
-            placeholder="Enter Address"
+            placeholder="Enter Event Location Address"
           />
         </div>
 
