@@ -100,7 +100,7 @@ const MenuForm = () => {
         (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
       ).toFixed(2)
     )
-  }, [steak, chicken, chickenPork, pigRoast, setupFee])
+  }, [steak, chicken, chickenPork, pigRoast, setupFee, groupSize])
 
   useEffect(() => {
     setSetupFee(
@@ -284,7 +284,7 @@ const MenuForm = () => {
           </label>
           <p className="p-2">${price}</p>
         </div>
-        <button type="button" className="btn btn-primary" onClick={handleSubmit}>Continue to Service Outline Form</button>
+        <button type="button" className="btn btn-md btn-primary" onClick={handleSubmit}>Continue to Service Outline Form</button>
       </div>
     </Layout>
   )
