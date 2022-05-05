@@ -29,335 +29,310 @@ const Menu = () => {
 
         <div className="flex flex-col items-center pt-10">
           <p align="left">
-            <font face="Geneva, Arial, Helvetica, sans-serif">
+          
               <strong>Appetizers</strong>
-            </font>
+
           </p>
           
-          <table align="center p-2">
+          <table align="center">
             <tbody>
               <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
                 <td bgcolor="#EDF3ED" className="p-2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                  
                     Steamed Mussels <i>served with melted butter</i>
-                  </font>
+                 
                 </td>
                 <td align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$5.95</font>
+                  $5.95
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
                 <td bgcolor="#FCF8DC" className="p-2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     Bacon-Wrapped Scallops{" "}
                     <i>
                       barbequed and served with honey mustard and seafood sauce
                     </i>
-                  </font>
                 </td>
                 <td align="RIGHT" className="p-2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     $11.25
-                  </font>
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
                 <td colspan="2" bgcolor="#EDF3ED" className="p-2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     Charge based on full group size.
-                  </font>
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
                 <td colspan="2" className="p-2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                  
                     Cheeseballs and crackers, mini eggrolls <i>and much more</i>{" "}
                     also available.
-                  </font>
+                 
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <font face="Geneva, Arial, Helvetica, sans-serif">
+          <p className="py-2">
             <strong>Main Menu Selections</strong>
-          </font>
+          </p>
           <table
-            width="705"
-            cellspacing="0"
-            cellpadding="6"
-            border="0"
             align="center"
           >
             <tbody>
-              <tr valign="TOP" bgcolor="#EDF3ED">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
                 <td>
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     Boneless Pork Steak
-                  </font>
                 </td>
-                <td align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                <td align="RIGHT" className="p-2">
                     $16.45
-                  </font>
+                 
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
+              <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
                 <td>
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     Chicken Breast
                     <i>(6 oz, boneless)</i>
-                  </font>
+                 
                 </td>
-                <td align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                <td align="RIGHT" className="p-2">
                     $17.75
-                  </font>
+                  
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
                 <td>
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     Strip Loin Steak 10oz
-                  </font>
+                  
                 </td>
-                <td align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    $23.95 add mushrooms $3.25
+                <td align="RIGHT" className="p-2">
+                  
+                    $23.95 <br />
+                    + mushrooms $3.25
                     <br />
-                    add onions $1.75
-                  </font>
+                    + onions $1.75
+                 
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
+                <td bgcolor="#FCF8DC" className="p-2">
+                  
                     Salmon
-                  </font>
+                  
                 </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                <td bgcolor="#FCF8DC" align="RIGHT" className="p-2">
+                  
                     $23.45
-                  </font>
+                  
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
-                <td bgcolor="#EDF3ED">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
+                <td bgcolor="#EDF3ED" className="p-2">
+                 
                     Tofu Veggie Kabob{" "}
-                  </font>
+                  
                 </td>
-                <td bgcolor="#EDF3ED" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    $16.45** can be done without tofu
+                <td bgcolor="#EDF3ED" align="RIGHT" className="p-2">
+                  
+                    $16.45** <br />
+                    available without tofu
                     <br />
-                  </font>
+                 
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
+                <td bgcolor="#FCF8DC" className="p-2">
+                  
                     Lobster
-                  </font>
+                  
                 </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    $16.45 + Lobster cost (you set the size and quantity)
-                  </font>
+                <td bgcolor="#FCF8DC" align="RIGHT" className="p-2">
+                 
+                    $16.45 <br />
+                     + Lobster cost (you set the size and quantity)
+                  
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
                 <td colspan="2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                  
                     Combinations of any of the above six choices available to
                     groups.
-                  </font>
+                  
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
+                <td bgcolor="#FCF8DC" className="p-2">
+                  
                     Unlimited Hip of Beef - Includes two desserts
-                  </font>
+                 
                 </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    $19.75 add mushrooms $3.25 add onions $1.75
-                  </font>
+                <td bgcolor="#FCF8DC" align="RIGHT" className="p-2">
+                  
+                    $19.75 <br />
+                    + mushrooms $3.25 <br />
+                    + onions $1.75
+                 
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
-                <td bgcolor="#EDF3ED">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
+                <td bgcolor="#EDF3ED" className="p-2">
+                  
                     Pork Buffet <i>(whole succulent roast pig) - </i>Includes
                     two desserts
-                  </font>
+               
                 </td>
-                <td bgcolor="#EDF3ED" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    <em>(based on minimum 75 person group)</em>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $28.45
-                  </font>
+                <td bgcolor="#EDF3ED" align="RIGHT" className="p-2">
+                  
+                    <em>(based on min. 75 person group)</em> <br/>
+                    $28.45
+                  
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+              <tr valign="TOP" bgcolor="#EDF3ED" className="p-2">
+                <td bgcolor="#FCF8DC" className="p-2">
                     Chicken(60%) / Pork(40%)
-                  </font>
+                 
                 </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
+                <td bgcolor="#FCF8DC" align="RIGHT" className="p-2">
                   $17.00** most popular item**
                 </td>
               </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
-                <td bgcolor="#EDF3ED">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    Extra meat portions add $3.50 as a stand alone menu
-                  </font>
+              <tr valign="TOP" bgcolor="#FCF8DC" className="p-2">
+                <td bgcolor="#EDF3ED" >
+                    Extra meat portions 
+                </td>
+                <td bgcolor="#EDF3ED" align="RIGHT" className="p-2">
+                + $3.50/portion
                 </td>
                 <td bgcolor="#EDF3ED" align="RIGHT">
                   &nbsp;
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC" align="right">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                <td bgcolor="#FCF8DC" >
                     Sausages, Chicken breast, Hamburger 6oz fresh,{" "}
-                  </font>
+                  
                   <br />
                   5oz bacon wrapped sirloin, pulled pork on a bun, Pork steak,
                   BEYOND MEAT Burger or <br />
                   Pork Back Ribs (1/3 rack)
                 </td>
                 <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$5.00</font>
-                </td>
-              </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC" align="right">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    Pork side Ribs{" "}
-                  </font>
-                </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$4.00</font>
-                </td>
-              </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
-                <td align="right">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    Ball Park hot dogs
-                  </font>
-                </td>
-                <td align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$3.00</font>
-                </td>
-              </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC" align="right">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    10oz Strip Loin Steak or Salmon
-                  </font>
-                </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    $10.00
-                  </font>
-                </td>
-              </tr>
-              <tr valign="TOP" bgcolor="#EDF3ED">
-                <td bgcolor="#FCF8DC" align="right">
-                  &nbsp;
-                </td>
-                <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    ***add $3.50 as a stand alone menu*** without buffet
-                  </font>
-                </td>
-              </tr>
-              <tr valign="TOP" bgcolor="#FCF8DC">
-                <td bgcolor="#EDF3ED">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    Children ages 7 - 12 Includes hotdog and adult option.
-                  </font>
-                </td>
-                <td bgcolor="#EDF3ED" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$9.95</font>
+                  $5.00
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#EDF3ED">
                 <td bgcolor="#FCF8DC">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
-                    Infant under 6 <i>(includes hotdog)</i>
-                  </font>
+                  
+                    Pork side Ribs{" "}
+                
                 </td>
                 <td bgcolor="#FCF8DC" align="RIGHT">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">$1.00</font>
+                 $4.00
+                </td>
+              </tr>
+              <tr valign="TOP" bgcolor="#FCF8DC">
+                <td >
+                  
+                    Ball Park hot dogs
+                  
+                </td>
+                <td align="RIGHT">
+                  $3.00
                 </td>
               </tr>
               <tr valign="TOP" bgcolor="#EDF3ED">
-                <td colspan="2">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                <td bgcolor="#FCF8DC" >
+                    10oz Strip Loin Steak or Salmon
+                
+                </td>
+                <td bgcolor="#FCF8DC" align="RIGHT">
+                    $10.00
+                  
+                </td>
+              </tr>
+              <tr valign="TOP" bgcolor="#EDF3ED">
+                <td bgcolor="#FCF8DC" >
+                  &nbsp;
+                </td>
+                <td bgcolor="#FCF8DC" align="left">
+                    ***add $3.50 as a stand alone menu*** without buffet
+                  
+                </td>
+              </tr>
+              <tr valign="TOP" bgcolor="#FCF8DC">
+                <td bgcolor="#EDF3ED">
+                    Children ages 7 - 12 Includes hotdog and adult option.
+                 
+                </td>
+                <td bgcolor="#EDF3ED" align="RIGHT">
+                  $9.95
+                </td>
+              </tr>
+              <tr valign="TOP" bgcolor="#EDF3ED">
+                <td bgcolor="#FCF8DC">
+                    Infant under 6 <i>(includes hotdog)</i>
+                 
+                </td>
+                <td bgcolor="#FCF8DC" align="RIGHT">
+                  $1.00
+                </td>
+              </tr>
+              <tr valign="TOP" bgcolor="#EDF3ED" >
+                <td colspan="2" className="pt-4">
                     All of the above items are served with our{" "}
                     <b>all you care to eat salad buffet.</b>{" "}
+                    <br />
                     <i>
                       Priced on specific group size - set up fee applied if
                       under 100 people. Infant and children not included for
-                      group sizing.{" "}
+                      group sizing.{" "} <br />
                     </i>
-                  </font>
-                  <font face="Arial, Helvetica, sans-serif">
                     Travel cost may apply. Travel cost from Moncton, NB or Turo,
                     N.S. = hours x 2 x $50.
                     <br />
                     IE - Moncton &amp; Fredricton = 1.5 hours x2 = 3 hr x $50.
                     (round trip) = $150. travel cost.
-                  </font>
+                  
                 </td>
               </tr>
               {/* <tr valign="TOP"> 
             <td colspan="2"><img src="images/bbq6.jpg" width="705" height="397" /></td>
           </tr> */}
               <tr valign="TOP" bgcolor="#FCF8DC">
-                <td colspan="2" bgcolor="#CC0000" align="center">
-                  <font
-                    face="Geneva, Arial, Helvetica, sans-serif"
-                    color="#FFFFFF"
-                  >
+                <td colspan="2" align="center" className="py-4">
+                  <p className="text-primary-lighter">
                     <b>
                       Discounts to Large Groups (1500 adults) and Sunday events
                       over 100 adults.
                     </b>
                     <br />
-                    Infant not included for group sizing. No discount for
+                    Infants not included in group sizing. Discount does not apply to
                     children.
-                  </font>
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
                     <br />
-                  </font>
+                    </p>
+
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <font face="Geneva, Arial, Helvetica, sans-serif">
             <br clear="all" />
             <img
               src="https://www.sizzlerbbq.com/images/buffet1.jpg"
-              width="705"
               vspace="4"
               height="732"
             />
             <br />
-            <b>This Salad Buffet is included with the main menu...</b>{" "}
-          </font>
+            <b>Salad Buffet items included with the menu features: </b>{" "}
+  
 
-          <table width="500" cellspacing="10" cellpadding="0" border="0">
+          <table cellspacing="10" cellpadding="0" border="0">
             <tbody>
               <tr>
                 <td colspan="1" rowspan="1" align="Left">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                  
                     Baked potato
                     <br />
                     Potato Salad
@@ -383,10 +358,10 @@ const Menu = () => {
                     <br />
                     Thousand Islands <br />
                     Tomatoes
-                  </font>
+                  
                 </td>
                 <td colspan="1" rowspan="1" align="Right">
-                  <font face="Geneva, Arial, Helvetica, sans-serif">
+                  
                     Celery
                     <br />
                     Carrots
@@ -414,7 +389,7 @@ const Menu = () => {
                     Italian Dressing
                     <br />
                     Ceasar Dressing
-                  </font>
+                 
                 </td>
               </tr>
             </tbody>

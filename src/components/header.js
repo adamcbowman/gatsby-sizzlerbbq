@@ -2,20 +2,20 @@ import React from "react"
 import { Link } from "gatsby"
 
 const navLinks = [
+  // {
+  //   name: "Welcome!",
+  //   link: "/",
+  // },
   {
-    name: "Welcome!",
-    link: "/",
-  },
-  {
-    name: "Our Menu",
+    name: "Menu",
     link: "/menu",
   },
   {
-    name: "Testimonials & FAQ",
+    name: "FAQ",
     link: "/faq",
   },
   {
-    name: "Service Outline Form",
+    name: "Book a BBQ",
     link: "/menu-form",
   },
   {
@@ -33,11 +33,13 @@ const header = () => {
     <header className="w-screen flex flex-col items-center border-b-2 bg-white">
       {/* logo */}
       <div className="flex flex-col items-center">
+        <Link to="/">
         <img
           src="https://www.sizzlerbbq.com/menu/header_r1_c1.gif"
           alt="Sizzler BBQ Logo"
           style={{ opacity: `85%` }}
         />
+        </Link>
       </div>
       {/* navbar */}
       <div class="navbar">

@@ -4,11 +4,11 @@ import { faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 const footer = () => {
   return (
-    <footer className="text-center text-primary p-4 bg-white w-screen">
-      <div className="container w-screen">
+    <footer className="text-center text-primary pt-4 bg-white w-screen">
+      <div className="w-screen">
         <div className="flex flex-col items-center justify-center w-screen">
 
-          <div className="flex flex-row p-6">
+          <div className="flex flex-row p-4">
             <a
               href="https://www.facebook.com/sizzlerbbqcatering/"
               target="_blank"
