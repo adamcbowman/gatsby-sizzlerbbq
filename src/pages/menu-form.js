@@ -97,7 +97,7 @@ const MenuForm = () => {
         parseFloat(chicken) +
         parseFloat(chickenPork) +
         parseFloat(pigRoast) + 
-        groupSize && groupSize > 0 ? parseFloat(setupFee) : 0
+        (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
       ).toFixed(2)
     )
   }, [steak, chicken, chickenPork, pigRoast, setupFee])
