@@ -9,7 +9,6 @@ const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
     <div className="flex flex-col items-center justify-center h-3/4 text-justify">
-
       <div className="hero min-h-3/4 bg-base-100">
         <div className="hero-content text-center flex flex-row items-center">
           <div className="max-w-xl">
@@ -18,11 +17,14 @@ const IndexPage = () => (
             </h1>
             <p className="py-6 text-justify">
               {" "}
-              We service all of Atlantic Canada, providing delicious meals for
-              small or large groups. Built on dependability and quality, we have
-              been serving Atlantic Canadians since 1980. For all your indoor or
-              outdoor functions, depend on{" "}
-              <em className="text-primary">Sizzler BBQ Catering.</em>.
+              Providing delicious meals throughout Atlantic Canada, 
+              small or large groups. Built on dependability and quality, Sizzler has
+              been serving Atlantic Canadians since 1980. 
+              For any size event, any time, indoors or out, you can always
+              depend on us!<br />
+              {/* <div className="text-center pt-2">
+                <em className="text-primary text-lg">Sizzler BBQ Catering</em>
+              </div> */}
             </p>
             <Link to="/menu-form">
               <button className="btn btn-primary">Plan your BBQ</button>
@@ -59,7 +61,6 @@ const IndexPage = () => (
                   className="w-full"
                 />
               </div>
-
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
               <a href="#item1" className="btn btn-xs">
@@ -77,7 +78,6 @@ const IndexPage = () => (
               <a href="#item5" className="btn btn-xs">
                 5
               </a>
-              
             </div>
           </div>
         </div>
