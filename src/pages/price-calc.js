@@ -36,16 +36,42 @@ const PriceCalc = () => {
       : setPigRoast(0)
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    const text = getFormDetailsText()
+    //navigate to google form link
+    window.open(
+    "https://docs.google.com/forms/d/e/1FAIpQLSe37aFLsm40IE2BC-DbHM6lFzSPXmU_2r2qFYyovJxMlqWSfA/viewform?usp=pp_url&entry.1533313772="+text,
+    "_blank"
+    )
+  }
+
+  const getFormDetailsText = () => {
+    let text = `
+    Group Size: ${groupSize}, 
+    Steak: ${steak},  
+    Chicken: ${chicken},  
+    Chicken/Pork: ${chickenPork},  
+    Pig Roast: ${pigRoast},  
+    Setup Fee: ${setupFee},  
+    Total: ${price}
+      `
+    return text
+  }
+
+
+
   useEffect(() => {
     setPrice(
       (
         parseFloat(steak) +
         parseFloat(chicken) +
         parseFloat(chickenPork) +
-        parseFloat(pigRoast)
+        parseFloat(pigRoast) + 
+        parseFloat(setupFee)
       ).toFixed(2)
     )
-  }, [steak, chicken, chickenPork, pigRoast])
+  }, [steak, chicken, chickenPork, pigRoast, setupFee])
 
   useEffect(() => {
     setSetupFee(
@@ -62,14 +88,12 @@ const PriceCalc = () => {
 
       <div className="flex flex-col items-center p-6">
         <h1 className="text-2xl font-bold text-primary">Price Calculator</h1>
-        {/* <div className="flex flex-col items-center">
-            <p>Select # of portions requested for each item to estimate total cost</p>
-        </div> */}
+
       </div>
       <div className="flex flex-col items-left">
         <div className="flex items-center border p-4">
           <label htmlFor="group-size" className="p-2">
-            Total Group Size
+            Group Size
           </label>
           <input
             type="number"
@@ -143,9 +167,13 @@ const PriceCalc = () => {
         </div>
 
         {groupSize > 0 && groupSize < 100 ? (
-          <div className="flex flex-col items-center p-2 text-primary">
-            <p>Set Up Charge: ${setupFee}</p>
+          <>
+          <div className="flex items-center justify-between p-2 ">
+            <p>Set Up Charge:</p> <p>${setupFee}</p>
           </div>
+          <p className="text-xs p-2">Applies to groups under 100</p>
+          </>
+          
         ) : null}
 
         <div className="flex items-center border justify-between">
@@ -154,6 +182,7 @@ const PriceCalc = () => {
           </label>
           <p className="p-2">${price}</p>
         </div>
+        <button type="button" className="btn btn-primary" onClick={handleSubmit}>Continue to Service Outline Form</button>
       </div>
     </Layout>
   )
