@@ -15,7 +15,7 @@ const navLinks = [
     link: "/faq",
   },
   {
-    name: "Book a BBQ",
+    name: "Plan Your BBQ",
     link: "/menu-form",
   },
   {

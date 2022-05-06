@@ -1,15 +1,18 @@
 import React from "react"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
-// import Slider from "react-slick/lib/slider";
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import ReviewCarousel from "../components/ReviewCarousel"
+
 
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
     <div className="flex flex-col items-center justify-center h-3/4 text-justify">
+
       <div className="hero min-h-3/4 bg-base-100">
+
         <div className="hero-content text-center flex flex-row items-center">
           <div className="max-w-xl">
             <h1 class="text-xl font-bold text-primary pt-4">
@@ -19,17 +22,21 @@ const IndexPage = () => (
               {" "}
               Providing delicious meals throughout Atlantic Canada, 
               small or large groups. Built on dependability and quality, Sizzler has
-              been serving Atlantic Canadians since 1980. 
+              been serving Atlantic Canadians for over 40 years! 
               For any size event, any time, indoors or out, you can always
-              depend on us!<br />
+              depend on us.<br />
               {/* <div className="text-center pt-2">
                 <em className="text-primary text-lg">Sizzler BBQ Catering</em>
               </div> */}
             </p>
+            <div className="flex flex-row justify-center p-6">
             <Link to="/menu-form">
               <button className="btn btn-primary">Plan your BBQ</button>
             </Link>
-
+            </div>
+            
+            {/* photo carousel */}
+            <div>
             <div className="carousel w-full rounded-lg py-6">
               <div id="item1" className="carousel-item w-full">
                 <img
@@ -79,6 +86,13 @@ const IndexPage = () => (
                 5
               </a>
             </div>
+            </div>
+
+            {/* review slider */}
+            <div className="flex flex-row justify-center p-6">
+            <ReviewCarousel />
+            </div>
+
           </div>
         </div>
       </div>
