@@ -98,7 +98,7 @@ const MenuForm = () => {
         parseFloat(pigRoast) + 
         parseFloat(desertCharge) +
         parseFloat(coffeeCharge) +
-        parseFloat(flatwareCharge)
+        parseFloat(flatwareCharge) +
 
         (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
       ).toFixed(2)
