@@ -9,16 +9,16 @@ import ReviewCarousel from "../components/ReviewCarousel"
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <div className="flex flex-col items-center justify-center h-3/4 text-justify">
+    <div className="flex flex-col items-center justify-center h-full md:h-3/4 text-justify">
 
-      <div className="hero min-h-3/4 bg-base-100">
+      <div className="hero h-full md:min-h-3/4 bg-base-100 flex flex-col">
 
-        <div className="hero-content text-center flex flex-row items-center">
-          <div className="max-w-xl">
+        <div className="p-4 hero-content text-center flex flex-row items-center">
+          <div className="w-screen md:max-w-xl">
             <h1 class="text-xl font-bold text-primary pt-4">
               Mobile Catering is <em>our business</em>.
             </h1>
-            <p className="py-6 text-justify">
+            <p className="text-center p-6 md:text-justify">
               {" "}
               Providing delicious meals throughout Atlantic Canada, 
               small or large groups. Built on dependability and quality, Sizzler has
@@ -87,9 +87,9 @@ const IndexPage = () => (
               </a>
             </div>
             </div>
-
+            
             {/* review slider */}
-            <div className="flex flex-row justify-center p-6">
+            <div className="flex flex-row justify-center pt-12 p-6 bg-base-200">
             <ReviewCarousel />
             </div>
 
