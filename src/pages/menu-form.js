@@ -123,6 +123,7 @@ const MenuForm = () => {
 
       </div>
       <div className="flex flex-col items-left">
+
         {/* group siz */}
         <div className="flex justify-between border">
           <label htmlFor="group-size" className="p-2">
@@ -153,6 +154,7 @@ const MenuForm = () => {
             onChange={handleInfants}
           />
         </div>
+
         {/* chicken/pork */}
         <div className="flex items-center border justify-between">
           <label htmlFor="chickenPork" className="p-2">
@@ -167,6 +169,7 @@ const MenuForm = () => {
           />
           <p className="p-2">${chickenPork}</p>
         </div>
+
         {/* pork */}
         <div className="flex items-center border w-full justify-between">
           <label htmlFor="steak" className="p-2">
@@ -181,11 +184,17 @@ const MenuForm = () => {
           />
           <p className="p-2">${steak}</p>
         </div>
+
         {/* chicken */}
         <div className="flex items-center border justify-between">
+          <div>
           <label htmlFor="chicken" className="p-2">
-            Chicken Breast (6 oz, boneless) @ $17.75
+            Chicken @ $17.75
           </label>
+          <p className="p-2 text-xs">
+          6oz Boneless Chicken Breast 
+          </p>
+          </div>
           <input
             type="number"
             id="chicken"
@@ -195,6 +204,7 @@ const MenuForm = () => {
           />
           <p className="p-2">${chicken}</p>
         </div>
+
         {/* pig roast */}
         <div className="flex items-center pt-2 border justify-between">
           <div>
@@ -202,8 +212,8 @@ const MenuForm = () => {
               Pork Buffet (whole succulent roast pig) @ $28.45
             </label>
             <br />
-            <p className="p-2">
-              Includes two desserts. based on minimum 75 person group
+            <p className="p-2 text-xs">
+              Includes both desserts. Price based on min. 75 person group
             </p>
           </div>
           <input
