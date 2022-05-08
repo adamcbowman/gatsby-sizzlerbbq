@@ -124,46 +124,55 @@ const MenuForm = () => {
       </div>
       <div className="flex flex-col items-left">
 
-        {/* group siz */}
-        <div className="flex justify-between border">
-          <label htmlFor="group-size" className="p-2">
+        {/* group size */}
+        <p className="p-2 text-xs">
+          Select the total number of guests in your group. 
+          </p>
+        <div className="flex flex-col w-full md:flex-row items-center justify-items-center border">
+          <label htmlFor="group-size" className="p-2  label">
             Group Size - Adults
           </label>
           <input
             type="number"
             id="group-size"
-            className="w-32"
+            className="p-2 input input-bordered input-primary"
             defaultValue={0}
             onChange={handleGroupSize}
           /> 
-          <label htmlFor="children" className="p-2">Children (0-17)</label>
+
+          <label htmlFor="children" className="p-2  label">Children (0-17)</label>
           <input
 
             type="number"
             id="children"
-            className="w-32"
+            className="p-2 input input-bordered input-primary"
             defaultValue={0}
             onChange={handleChildren}
           />
-          <label htmlFor="infants" className="p-2">Infants (0-2)</label>
+          <label htmlFor="infants" className="p-2 label">Infants (0-2)</label>
           <input
             type="number"
             id="infants"
-            className="w-32"
+            className="p-2 input input-bordered input-primary"
             defaultValue={0}
             onChange={handleInfants}
           />
         </div>
 
+        <p className="p-2 text-xs">
+          Select the number of servings for each menu choice below. 
+          </p>
         {/* chicken/pork */}
-        <div className="flex items-center border justify-between">
-          <label htmlFor="chickenPork" className="p-2">
+        <div className="flex flex-col md:flex-row items-center border justify-between">
+          <div className="md:w-1/3">
+          <label htmlFor="chickenPork" className="p-2 label">
             Chicken(60%) / Pork(40%) @ $17
           </label>
+          </div>
           <input
             type="number"
             id="chickenPork"
-            className="w-2/12"
+            className="p-2 input input-bordered input-primary"
             onChange={handleChickenPork}
             defaultValue={0}
           />
@@ -171,14 +180,16 @@ const MenuForm = () => {
         </div>
 
         {/* pork */}
-        <div className="flex items-center border w-full justify-between">
-          <label htmlFor="steak" className="p-2">
+        <div className="flex flex-col md:flex-row items-center border justify-between">
+        <div className="md:w-1/3">
+          <label htmlFor="steak" className="p-2 label">
             Boneless Pork Steak @ $16.45
           </label>
+          </div>
           <input
             type="number"
             id="steak"
-            className="w-2/12"
+            className="p-2 input input-bordered input-primary "
             onChange={handleSteak}
             defaultValue={0}
           />
@@ -186,9 +197,9 @@ const MenuForm = () => {
         </div>
 
         {/* chicken */}
-        <div className="flex items-center border justify-between">
-          <div>
-          <label htmlFor="chicken" className="p-2">
+        <div className="flex flex-col md:flex-row items-center border justify-between">
+          <div className="md:w-1/3">
+          <label htmlFor="chicken" className="p-2 label">
             Chicken @ $17.75
           </label>
           <p className="p-2 text-xs">
@@ -198,7 +209,7 @@ const MenuForm = () => {
           <input
             type="number"
             id="chicken"
-            className="w-2/12"
+            className="p-2 input input-bordered input-primary"
             onChange={handleChicken}
             defaultValue={0}
           />
@@ -206,9 +217,9 @@ const MenuForm = () => {
         </div>
 
         {/* pig roast */}
-        <div className="flex items-center pt-2 border justify-between">
-          <div>
-            <label htmlFor="pig-roast" className="p-2">
+        <div className="flex flex-col md:flex-row items-center border justify-between">
+          <div className="w-1/3">
+            <label htmlFor="pig-roast" className="p-2 label">
               Pork Buffet (whole succulent roast pig) @ $28.45
             </label>
             <br />
@@ -219,21 +230,23 @@ const MenuForm = () => {
           <input
             type="number"
             id="pig-roast"
-            className="w-2/12"
+            className="p-2 input input-bordered input-primary"
             onChange={handlePigRoast}
             defaultValue={0}
           />
           <p className="p-2">${pigRoast}</p>
         </div>
         {/* desert */}
-        <div className="flex items-center border justify-between">
-          <label htmlFor="desert" className="p-2">
+        <div className="flex items-center border justify-between w-full">
+          <div className="w-1/3">
+          <label htmlFor="desert" className="p-2 label">
             Deserts
           </label>
+          </div>
           <select
             type="select"
             id="desert"
-            className="w-6/12"
+            className="p-2 input input-bordered input-primary"
             onChange={handleDesert}
           >
             <option value="">Select</option>
@@ -241,34 +254,40 @@ const MenuForm = () => {
             <option value="Apple Crisp">Apple Crisp</option>
             <option value="Both">Both (+$0.75/person)</option>
           </select>
+          <p className="p-2">${desertCharge}</p>
         </div>
         {/* coffee */}
         <div className="flex items-center border justify-between">
-          <label htmlFor="coffee" className="p-2">
+          <div className="w-1/3">
+          <label htmlFor="coffee" className="p-2 label">
             Coffee/Tea
           </label>
+          </div>
           <select
             type="select"
             id="coffee"
-            className="w-6/12"
+            className="p-2 input input-bordered input-primary"
             onChange={handleCoffee}
           >
             <option value="">Select</option>
             <option value="Coffee">Coffee/Tea (+$0.50/person)</option>
             <option value="No">No</option>
           </select>
+          <p className="p-2">${coffeeCharge}</p>
         </div>
 
         {/* flatware */}
         <div>
         <div className="flex items-center border justify-between">
-          <label htmlFor="flatware" className="p-2">
+          <div className="w-1/3">
+          <label htmlFor="flatware" className="p-2 label">
             Flatware
           </label>
+          </div>
           <select
             type="select"
             id="flatware"
-            className="w-6/12"
+            className="p-2 input input-bordered input-primary w-full"
             onChange={handleFlatware}
           >
             <option value="">Select</option>
@@ -276,11 +295,15 @@ const MenuForm = () => {
             <option value="Rental"> Flatware Rental (+ $1.75/person & 15% clearing charge)</option>
             <option value="Upgrade"> Flatware Upgrade (+ $3/person)</option>
           </select>
+          <p className="p-2">${flatwareCharge}</p>
         </div>
         <p className="text-xs">
-          { flatware === 'Royal' ? 'RoyalChinette - included in price - PLATE, FORK, KNIFE, SPOON - disposable' : '' }
-          { flatware === 'Rental' ? 'Flatware Rental - Stoneware and silverware - Plate, Fork, Knife, Spoon, $1.75 per setting plus 15% clearing charge' : '' }
-          { flatware === 'Upgrade' ? 'Disposable Flatware upgrade - real lookbut disposable - PLATE, FORK, KNIFE, SPOON -  $3/person, no clearning charge' : '' }
+          <ul>
+          <li>RoyalChinette - included in price - PLATE, FORK, KNIFE, SPOON - disposable </li>
+          <li>Flatware Rental - Stoneware and silverware - Plate, Fork, Knife, Spoon, $1.75 per setting plus 15% clearing charge </li>
+          <li>Disposable Flatware upgrade - real lookbut disposable - PLATE, FORK, KNIFE, SPOON -  $3/person, no clearning charge</li>
+          </ul>
+          
         </p>
         </div>
 
@@ -295,17 +318,21 @@ const MenuForm = () => {
         ) : null}
         {/* location */}
         <div className="flex items-center p-2">
-          <label htmlFor="location" className="p-2">
-            Location
+          <div className="w-1/3">
+          <label htmlFor="location" className="label p-2">
+            Event Location (address)
           </label>
+          </div>
           <input
             type="text"
             id="location"
-            className="w-6/12"
+            className="p-2 input input-bordered input-primary w-full"
             onChange={handleLocation}
             placeholder="Enter Event Location Address"
           />
+          <p className="p-2">$0</p>
         </div>
+        <p className="text-xs p-2">Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. = hours x 2 x $50.00</p>
         {/* total */}
         <div className="flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
