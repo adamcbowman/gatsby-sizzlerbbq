@@ -25,6 +25,8 @@ const MenuForm = () => {
 
   const [address, setAddress] = useState("")
   const [province, setProvince] = useState("")
+  const [latLong, setLatLong] = useState([])
+  const [travelFee, setTravelFee] = useState(0)
 
   const handleGroupSize = e => {
     setGroupSize(e.target.value)
@@ -88,6 +90,7 @@ const MenuForm = () => {
     Coffee: ${coffeeCharge},
     Flatware: ${flatwareCharge}
     Setup Fee: ${setupFee},  
+    Travel Fee: ${travelFee}},
     Total: ${price}
       `
     return menu
@@ -97,20 +100,61 @@ const MenuForm = () => {
     setAddress(e)
   }
 
+  //get address/travel time from api
   useEffect(() => {
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2s3YWZndHJjMHY3bzNkbXlsY2oxdm0zbyJ9.NU4o56BdtvFhpVXVRCmn5g`
     )
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         let region = data.features[0]
           ? data.features[0].context.find(obj => obj.id.includes("region"))
           : null
         setProvince(region.text)
+        setLatLong(data.features[0].center)
       })
       .catch(err => console.log(err))
-  }, [address])
+
+    // set travel fee to 0 for Prince Edward Island
+    if (province === "Prince Edward Island") {
+      setTravelFee(0)
+    }
+
+    //if Province is New Brunswick, get travel time from address to Moncton
+    // [-64.80011,46.097995]
+    else if (province === "New Brunswick") {
+      fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/driving/${latLong[0]},${latLong[1]};-64.80011,46.097995?access_token=pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2s3YWZndHJjMHY3bzNkbXlsY2oxdm0zbyJ9.NU4o56BdtvFhpVXVRCmn5g`
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setTravelFee(Math.round(data.routes[0].duration / 60 / 60 * 2 * 50).toFixed(2))
+        })
+        .catch(err => console.log(err))
+    }
+
+    //if province is Nova Scotia, get travel time from address to Truro
+    // truro latlong [-63.300006,45.366668]
+    else if (province === "Nova Scotia") {
+      fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/driving/${latLong[0]},${latLong[1]};-63.300006,45.366668?access_token=pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2s3YWZndHJjMHY3bzNkbXlsY2oxdm0zbyJ9.NU4o56BdtvFhpVXVRCmn5g`
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          setTravelFee(Math.round(data.routes[0].duration / 60 / 60 * 2 * 50).toFixed(2))
+        })
+        .catch(err => console.log(err))
+    }
+
+    // else set travel fee to 0
+    else {
+      setTravelFee(0)
+    }
+
+  }, [address, province, latLong])
 
   useEffect(() => {
     setPrice(
@@ -122,6 +166,7 @@ const MenuForm = () => {
         parseFloat(desertCharge) +
         parseFloat(coffeeCharge) +
         parseFloat(flatwareCharge) +
+        parseFloat(travelFee) +
         (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
       ).toFixed(2)
     )
@@ -135,6 +180,8 @@ const MenuForm = () => {
     coffeeCharge,
     flatwareCharge,
     groupSize,
+    travelFee,
+    setupFee,
   ])
 
   useEffect(() => {
@@ -304,7 +351,7 @@ const MenuForm = () => {
         </div>
 
         {/* flatware */}
-        <div>
+        <div className="">
           <div className="flex items-center border justify-between">
             <div className="w-1/3">
               <label htmlFor="flatware" className="p-2 label">
@@ -314,7 +361,7 @@ const MenuForm = () => {
             <select
               type="select"
               id="flatware"
-              className="p-2 input input-bordered input-primary w-full"
+              className="p-2 input input-bordered input-primary "
               onChange={handleFlatware}
             >
               <option value="">Select</option>
@@ -323,11 +370,14 @@ const MenuForm = () => {
                 {" "}
                 Flatware Rental (+ $1.75/person & 15% clearing charge)
               </option>
-              <option value="Upgrade"> Flatware Upgrade (+ $3/person)</option>
+              <option value="Upgrade">
+                {" "}
+                Dispoable Flatware Upgrade (+ $3/person)
+              </option>
             </select>
             <p className="p-2">${flatwareCharge}</p>
           </div>
-          <p className="text-xs">
+          {/* <p className="text-xs">
             <ul>
               <li>
                 RoyalChinette - included in price - PLATE, FORK, KNIFE, SPOON -
@@ -342,7 +392,7 @@ const MenuForm = () => {
                 FORK, KNIFE, SPOON - $3/person, no clearning charge
               </li>
             </ul>
-          </p>
+          </p> */}
         </div>
 
         {/* setup fee */}
@@ -356,29 +406,33 @@ const MenuForm = () => {
         ) : null}
 
         {/* location */}
-        <div className="flex items-center p-2">
-          <div className="w-1/3">
-            <label htmlFor="location" className="label p-2">
-              Event Location (address)
-            </label>
+        <div className="items-center justify-between border">
+          <div className="flex items-center justify-items-center align-middle p-2">
+            <div className="w-1/3">
+              <label htmlFor="location" className="label p-2">
+                Event Location (address)
+              </label>
+            </div>
+            <div className="w-2/3 py-2">
+              <MapboxAutocomplete
+                publicKey="pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2wzaXFnZ2ZpMDZpNjNpbzhibzc2ZDE1NyJ9.w8mpu3OmuE-Vl2koZ_-OWg"
+                inputClass="form-control input input-bordered input-primary w-full mt-3"
+                onSuggestionSelect={handleLocation}
+                country="ca"
+                placeholder="Enter Event Location Address"
+                resetSearch={false}
+              />
+            </div>
+            <p className="p-2">${travelFee}</p>
           </div>
-          <div className="w-2/3">
-            <MapboxAutocomplete
-              publicKey="pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2wzaXFnZ2ZpMDZpNjNpbzhibzc2ZDE1NyJ9.w8mpu3OmuE-Vl2koZ_-OWg"
-              inputClass="form-control input input-bordered input-primary w-full"
-              onSuggestionSelect={handleLocation}
-              country="ca"
-              placeholder="Enter Event Location Address"
-              resetSearch={false}
-            />
-          </div>
+          <p className="text-xs">
+            Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. =
+            hours x 2 x $50.00 <br />
+          </p>
+          
         </div>
-        <p className="text-xs p-2">
-          Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. =
-          hours x 2 x $50.00
-        </p>
         {/* total */}
-        <div className="flex items-center border justify-between">
+        <div className="mt-8 mb-4 flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
             Total Cost
           </label>
@@ -389,7 +443,7 @@ const MenuForm = () => {
           className="btn btn-md btn-primary"
           onClick={handleSubmit}
         >
-          Continue to Service Outline Form
+          Continue to Service Request Form
         </button>
       </div>
     </Layout>
