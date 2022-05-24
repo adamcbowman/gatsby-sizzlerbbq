@@ -1,14 +1,15 @@
 import React, { useEffect } from "react"
+import MapboxAutocomplete from "react-mapbox-autocomplete"
+
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { useState } from "react"
 
 const MenuForm = () => {
-    
   const [groupSize, setGroupSize] = useState(0)
   const [children, setChildren] = useState(0)
   const [infants, setInfants] = useState(0)
-  
+
   const [setupFee, setSetupFee] = useState(0)
 
   const [price, setPrice] = useState(0)
@@ -23,7 +24,7 @@ const MenuForm = () => {
   const [flatware, setFlatware] = React.useState("")
 
   const [address, setAddress] = useState("")
- 
+  const [province, setProvince] = useState("")
 
   const handleGroupSize = e => {
     setGroupSize(e.target.value)
@@ -52,10 +53,14 @@ const MenuForm = () => {
       : setPigRoast(0)
   }
   const handleDesert = e => {
-    e.target.value === "Both" ? setDesertCharge(groupSize*.75) : setDesertCharge(0)
+    e.target.value === "Both"
+      ? setDesertCharge(groupSize * 0.75)
+      : setDesertCharge(0)
   }
   const handleCoffee = e => {
-    e.target.value === "Coffee" ? setCoffeeCharge(groupSize*.5) : setCoffeeCharge(0)
+    e.target.value === "Coffee"
+      ? setCoffeeCharge(groupSize * 0.5)
+      : setCoffeeCharge(0)
   }
 
   const handleFlatware = e => {
@@ -79,55 +84,75 @@ const MenuForm = () => {
     Chicken: ${chicken},  
     Chicken/Pork: ${chickenPork},  
     Pig Roast: ${pigRoast},  
+    Desert: ${desertCharge},
+    Coffee: ${coffeeCharge},
+    Flatware: ${flatwareCharge}
     Setup Fee: ${setupFee},  
     Total: ${price}
       `
     return menu
   }
 
-  const handleLocation = e => {
-    setAddress(e.target.value)
+  const handleLocation = async e => {
+    setAddress(e)
   }
-  
+
+  useEffect(() => {
+    fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2s3YWZndHJjMHY3bzNkbXlsY2oxdm0zbyJ9.NU4o56BdtvFhpVXVRCmn5g`
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        let region = data.features[0]
+          ? data.features[0].context.find(obj => obj.id.includes("region"))
+          : null
+        setProvince(region.text)
+      })
+      .catch(err => console.log(err))
+  }, [address])
+
   useEffect(() => {
     setPrice(
       (
         parseFloat(steak) +
         parseFloat(chicken) +
         parseFloat(chickenPork) +
-        parseFloat(pigRoast) + 
+        parseFloat(pigRoast) +
         parseFloat(desertCharge) +
         parseFloat(coffeeCharge) +
         parseFloat(flatwareCharge) +
-
         (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
       ).toFixed(2)
     )
-  }, [steak, chicken, chickenPork, pigRoast, setupFee, desertCharge, coffeeCharge, flatwareCharge, groupSize])
+  }, [
+    steak,
+    chicken,
+    chickenPork,
+    pigRoast,
+    setupFee,
+    desertCharge,
+    coffeeCharge,
+    flatwareCharge,
+    groupSize,
+  ])
 
   useEffect(() => {
-    setSetupFee(
-      (
-        groupSize < 100 ? (100 - groupSize) * 6 : 0
-      ).toFixed(2)
-    )
+    setSetupFee((groupSize < 100 ? (100 - groupSize) * 6 : 0).toFixed(2))
   }, [groupSize])
-
 
   return (
     <Layout>
-      <Seo title="Menu Selection Form" />
+      <Seo title="Sizzler BBQ Catering Menu Selection Form" />
 
       <div className="flex flex-col items-center p-6">
         <h1 className="text-2xl font-bold text-primary">Menu Selection Form</h1>
-
       </div>
       <div className="flex flex-col items-left">
-
         {/* group size */}
         <p className="p-2 text-xs">
-          Select the total number of guests in your group. 
-          </p>
+          Select the total number of guests in your group.
+        </p>
         <div className="flex flex-col w-full md:flex-row items-center justify-items-center border">
           <label htmlFor="group-size" className="p-2  label">
             Group Size - Adults
@@ -138,18 +163,21 @@ const MenuForm = () => {
             className="p-2 input input-bordered input-primary"
             defaultValue={0}
             onChange={handleGroupSize}
-          /> 
+          />
 
-          <label htmlFor="children" className="p-2  label">Children (0-17)</label>
+          <label htmlFor="children" className="p-2  label">
+            Children (0-17)
+          </label>
           <input
-
             type="number"
             id="children"
             className="p-2 input input-bordered input-primary"
             defaultValue={0}
             onChange={handleChildren}
           />
-          <label htmlFor="infants" className="p-2 label">Infants (0-2)</label>
+          <label htmlFor="infants" className="p-2 label">
+            Infants (0-2)
+          </label>
           <input
             type="number"
             id="infants"
@@ -160,14 +188,15 @@ const MenuForm = () => {
         </div>
 
         <p className="p-2 text-xs">
-          Select the number of servings for each menu choice below. 
-          </p>
+          Select the number of servings for each menu choice below.
+        </p>
+
         {/* chicken/pork */}
         <div className="flex flex-col md:flex-row items-center border justify-between">
           <div className="md:w-1/3">
-          <label htmlFor="chickenPork" className="p-2 label">
-            Chicken(60%) / Pork(40%) @ $17
-          </label>
+            <label htmlFor="chickenPork" className="p-2 label">
+              Chicken(60%) / Pork(40%) @ $17
+            </label>
           </div>
           <input
             type="number"
@@ -181,10 +210,10 @@ const MenuForm = () => {
 
         {/* pork */}
         <div className="flex flex-col md:flex-row items-center border justify-between">
-        <div className="md:w-1/3">
-          <label htmlFor="steak" className="p-2 label">
-            Boneless Pork Steak @ $16.45
-          </label>
+          <div className="md:w-1/3">
+            <label htmlFor="steak" className="p-2 label">
+              Boneless Pork Steak @ $16.45
+            </label>
           </div>
           <input
             type="number"
@@ -199,12 +228,10 @@ const MenuForm = () => {
         {/* chicken */}
         <div className="flex flex-col md:flex-row items-center border justify-between">
           <div className="md:w-1/3">
-          <label htmlFor="chicken" className="p-2 label">
-            Chicken @ $17.75
-          </label>
-          <p className="p-2 text-xs">
-          6oz Boneless Chicken Breast 
-          </p>
+            <label htmlFor="chicken" className="p-2 label">
+              Chicken @ $17.75
+            </label>
+            <p className="p-2 text-xs">6oz Boneless Chicken Breast</p>
           </div>
           <input
             type="number"
@@ -239,9 +266,9 @@ const MenuForm = () => {
         {/* desert */}
         <div className="flex items-center border justify-between w-full">
           <div className="w-1/3">
-          <label htmlFor="desert" className="p-2 label">
-            Deserts
-          </label>
+            <label htmlFor="desert" className="p-2 label">
+              Deserts
+            </label>
           </div>
           <select
             type="select"
@@ -259,9 +286,9 @@ const MenuForm = () => {
         {/* coffee */}
         <div className="flex items-center border justify-between">
           <div className="w-1/3">
-          <label htmlFor="coffee" className="p-2 label">
-            Coffee/Tea
-          </label>
+            <label htmlFor="coffee" className="p-2 label">
+              Coffee/Tea
+            </label>
           </div>
           <select
             type="select"
@@ -278,61 +305,78 @@ const MenuForm = () => {
 
         {/* flatware */}
         <div>
-        <div className="flex items-center border justify-between">
-          <div className="w-1/3">
-          <label htmlFor="flatware" className="p-2 label">
-            Flatware
-          </label>
+          <div className="flex items-center border justify-between">
+            <div className="w-1/3">
+              <label htmlFor="flatware" className="p-2 label">
+                Flatware
+              </label>
+            </div>
+            <select
+              type="select"
+              id="flatware"
+              className="p-2 input input-bordered input-primary w-full"
+              onChange={handleFlatware}
+            >
+              <option value="">Select</option>
+              <option value="Royal">RoyalChinette - disposable</option>
+              <option value="Rental">
+                {" "}
+                Flatware Rental (+ $1.75/person & 15% clearing charge)
+              </option>
+              <option value="Upgrade"> Flatware Upgrade (+ $3/person)</option>
+            </select>
+            <p className="p-2">${flatwareCharge}</p>
           </div>
-          <select
-            type="select"
-            id="flatware"
-            className="p-2 input input-bordered input-primary w-full"
-            onChange={handleFlatware}
-          >
-            <option value="">Select</option>
-            <option value="Royal">RoyalChinette - disposable</option>
-            <option value="Rental"> Flatware Rental (+ $1.75/person & 15% clearing charge)</option>
-            <option value="Upgrade"> Flatware Upgrade (+ $3/person)</option>
-          </select>
-          <p className="p-2">${flatwareCharge}</p>
-        </div>
-        <p className="text-xs">
-          <ul>
-          <li>RoyalChinette - included in price - PLATE, FORK, KNIFE, SPOON - disposable </li>
-          <li>Flatware Rental - Stoneware and silverware - Plate, Fork, Knife, Spoon, $1.75 per setting plus 15% clearing charge </li>
-          <li>Disposable Flatware upgrade - real lookbut disposable - PLATE, FORK, KNIFE, SPOON -  $3/person, no clearning charge</li>
-          </ul>
-          
-        </p>
+          <p className="text-xs">
+            <ul>
+              <li>
+                RoyalChinette - included in price - PLATE, FORK, KNIFE, SPOON -
+                disposable{" "}
+              </li>
+              <li>
+                Flatware Rental - Stoneware and silverware - Plate, Fork, Knife,
+                Spoon, $1.75 per setting plus 15% clearing charge{" "}
+              </li>
+              <li>
+                Disposable Flatware upgrade - real lookbut disposable - PLATE,
+                FORK, KNIFE, SPOON - $3/person, no clearning charge
+              </li>
+            </ul>
+          </p>
         </div>
 
         {/* setup fee */}
         {groupSize > 0 && groupSize < 100 ? (
           <>
-          <div className="flex items-center justify-between p-2 ">
-            <p>Set Up Charge:</p> <p>${setupFee}</p>
-          </div>
-          <p className="text-xs p-2">Applies to groups under 100</p>
-          </>  
+            <div className="flex items-center justify-between p-2 ">
+              <p>Set Up Charge:</p> <p>${setupFee}</p>
+            </div>
+            <p className="text-xs p-2">Applies to groups under 100</p>
+          </>
         ) : null}
+
         {/* location */}
         <div className="flex items-center p-2">
           <div className="w-1/3">
-          <label htmlFor="location" className="label p-2">
-            Event Location (address)
-          </label>
+            <label htmlFor="location" className="label p-2">
+              Event Location (address)
+            </label>
           </div>
-          <input
-            type="text"
-            id="location"
-            className="p-2 input input-bordered input-primary w-full"
-            onChange={handleLocation}
-            placeholder="Enter Event Location Address"
-          />
-          <p className="p-2">$0</p>
+          <div className="w-2/3">
+            <MapboxAutocomplete
+              publicKey="pk.eyJ1IjoiYWRhbWNib3dtYW4iLCJhIjoiY2wzaXFnZ2ZpMDZpNjNpbzhibzc2ZDE1NyJ9.w8mpu3OmuE-Vl2koZ_-OWg"
+              inputClass="form-control input input-bordered input-primary w-full"
+              onSuggestionSelect={handleLocation}
+              country="ca"
+              placeholder="Enter Event Location Address"
+              resetSearch={false}
+            />
+          </div>
         </div>
-        <p className="text-xs p-2">Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. = hours x 2 x $50.00</p>
+        <p className="text-xs p-2">
+          Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. =
+          hours x 2 x $50.00
+        </p>
         {/* total */}
         <div className="flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2">
@@ -340,9 +384,14 @@ const MenuForm = () => {
           </label>
           <p className="p-2">${price}</p>
         </div>
-        <button type="button" className="btn btn-md btn-primary" onClick={handleSubmit}>Continue to Service Outline Form</button>
+        <button
+          type="button"
+          className="btn btn-md btn-primary"
+          onClick={handleSubmit}
+        >
+          Continue to Service Outline Form
+        </button>
       </div>
-
     </Layout>
   )
 }
