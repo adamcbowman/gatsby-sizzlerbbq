@@ -34,10 +34,13 @@ const footer = () => {
           </div>
 
           <div className="flex flex-col p-4 ">
-            <a href="tel:1-800-805-2227" className="text-primary p-2">
+            <a href="tel:1-800-805-2227" className="text-primary px-2 pt-2">
               1-800-805-2227
             </a>
-            <a href="mailto:sizzler@eastlink.ca" className="text-primary pb-8">
+            <a href="tel:1-902-892-6160" className="text-primary px-2">
+            902-892-6160
+            </a>
+            <a href="mailto:sizzler@eastlink.ca" className="text-primary pt-2 pb-8">
               sizzler@eastlink.ca
             </a>
             © {new Date().getFullYear()} Sizzler BBQ Catering, All Rights

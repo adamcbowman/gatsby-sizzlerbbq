@@ -8,7 +8,7 @@ import ReviewCarousel from "../components/ReviewCarousel"
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Home" />
+    <Seo title="Home - Sizzler BBQ Catering" />
     <div className="flex flex-col items-center justify-center h-full md:h-3/4 text-justify">
 
       <div className="hero h-full md:min-h-3/4 bg-base-100 flex flex-col">

@@ -156,6 +156,7 @@ const MenuForm = () => {
     let menu = 
     `
     Steak: ${steakQty} @$${steak},
+    Pork: ${porkSteakQty} @$${porkSteak},
     Chicken: ${chickenQty} @$${chicken}, 
     Salmon: ${salmonQty} @$${salmon},
     Tofu Veg Kabob: ${vegKabobQty} @$${vegKabob}, 
@@ -235,6 +236,7 @@ const MenuForm = () => {
       setTravelFee(0)
     }
   }, [address, province, latLong])
+
 // total cost
   useEffect(() => {
     setPrice(
@@ -270,7 +272,6 @@ const MenuForm = () => {
     lobster,
     roastBeef,
     pigRoast,
-    setupFee,
     desertCharge,
     coffeeCharge,
     flatwareCharge,

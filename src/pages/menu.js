@@ -9,7 +9,7 @@ import Seo from "../components/seo"
 const Menu = () => {
   return (
     <Layout>
-      <Seo title="Our Menu" />
+      <Seo title="Sizzler BBQ Catering - Our Menu" />
       <div className="container">
         <div className="flex flex-col items-center pt-10">
           <StaticImage
