@@ -1,4 +1,5 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
 
@@ -11,10 +12,10 @@ const Menu = () => {
       <Seo title="Our Menu" />
       <div className="container">
         <div className="flex flex-col items-center pt-10">
-          <img
-            src="https://www.sizzlerbbq.com/images/bbq3.jpg"
-            alt="Beef"
+          <StaticImage
             className="rounded-lg shadow-lg"
+            src="../images/bbq3.jpg"
+            alt="Beef"
             style={{ opacity: `95%` }}
           />
         </div>
@@ -319,15 +320,14 @@ const Menu = () => {
           </table>
 
             <br clear="all" />
-            <img
-              src="https://www.sizzlerbbq.com/images/buffet1.jpg"
-              vspace="4"
-              height="732"
+            <StaticImage 
+              src="../images/buffet1.jpg"
+              alt="Buffet"
+              className="img-fluid"
             />
             <br />
             <b>Salad Buffet items included with the menu features: </b>{" "}
   
-
           <table cellspacing="10" cellpadding="0" border="0">
             <tbody>
               <tr>

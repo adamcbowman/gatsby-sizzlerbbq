@@ -25,9 +25,6 @@ const IndexPage = () => (
               been serving Atlantic Canadians for over 40 years! 
               For any size event, any time, indoors or out, you can always
               depend on us.<br />
-              {/* <div className="text-center pt-2">
-                <em className="text-primary text-lg">Sizzler BBQ Catering</em>
-              </div> */}
             </p>
             <div className="flex flex-row justify-center p-6">
             <Link to="/menu-form">
@@ -39,33 +36,38 @@ const IndexPage = () => (
             <div>
             <div className="carousel w-full rounded-lg py-6">
               <div id="item1" className="carousel-item w-full">
-                <img
-                  src="https://www.sizzlerbbq.com/gallery/gallery1.jpg"
+                <StaticImage
                   className="w-full"
+                  src="../images/gallery1.jpg"
+                  alt="Sizzler BBQ Catering Trucks"
                 />
               </div>
               <div id="item2" className="carousel-item w-full">
-                <img
-                  src="https://www.sizzlerbbq.com/gallery/gallery2.jpg"
+                 <StaticImage
                   className="w-full"
+                  src="../images/gallery2.jpg"
+                  alt="Sizzler BBQ Catering Staff carving beef"
                 />
               </div>
               <div id="item3" className="carousel-item w-full">
-                <img
-                  src="https://www.sizzlerbbq.com/gallery/gallery3.jpg"
+                <StaticImage
                   className="w-full"
+                  src="../images/gallery3.jpg"
+                  alt="Sizzler BBQ Catering buffet tables"
                 />
               </div>
               <div id="item4" className="carousel-item w-full">
-                <img
-                  src="https://www.sizzlerbbq.com/gallery/gallery4.jpg"
+                <StaticImage
                   className="w-full"
+                  src="../images/gallery4.jpg"
+                  alt="Sizzler BBQ Catering pig roast"
                 />
               </div>
               <div id="item5" className="carousel-item w-full">
-                <img
-                  src="https://www.sizzlerbbq.com/gallery/gallery5.jpg"
+                <StaticImage
                   className="w-full"
+                  src="../images/gallery5.jpg"
+                  alt="Sizzler BBQ Catering - Bruce in action"
                 />
               </div>
             </div>
