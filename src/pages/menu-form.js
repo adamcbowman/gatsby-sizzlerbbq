@@ -125,7 +125,7 @@ const MenuForm = () => {
   }
 
   const handleDesert = e => {
-    e.target.value === "Both"
+    e.target.value === "Both" 
       ? setDesertCharge(groupSize * 0.75)
       : setDesertCharge(0)
 
@@ -263,6 +263,10 @@ const MenuForm = () => {
     steak,
     chicken,
     chickenPork,
+    salmon,
+    vegKabob,
+    lobster,
+    roastBeef,
     pigRoast,
     setupFee,
     desertCharge,
@@ -577,6 +581,7 @@ const MenuForm = () => {
             defaultValue="Carrot Cake"
             onChange={handleDesert}
           >
+            {/* TODO - setting both for pigroast/beef not working */}
             <option value="">Select</option>
             <option value="Carrot Cake">Carrot Cake</option>
             <option value="Apple Crisp">Apple Crisp</option>
