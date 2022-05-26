@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 const navLinks = [
   // {
@@ -34,8 +35,8 @@ const header = () => {
       {/* logo */}
       <div className="flex flex-col items-center">
         <Link to="/">
-        <img
-          src="https://www.sizzlerbbq.com/menu/header_r1_c1.gif"
+        <StaticImage
+          src="../images/header_r1_c1.gif"
           alt="Sizzler BBQ Logo"
           style={{ opacity: `85%` }}
         />
