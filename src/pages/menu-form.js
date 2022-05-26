@@ -245,6 +245,10 @@ const MenuForm = () => {
         parseFloat(chicken) +
         parseFloat(chickenPork) +
         parseFloat(pigRoast) +
+        parseFloat(salmon) +
+        parseFloat(vegKabob) +
+        parseFloat(lobster) +
+        parseFloat(roastBeef) +
         parseFloat(desertCharge) +
         parseFloat(coffeeCharge) +
         parseFloat(flatwareCharge) +
