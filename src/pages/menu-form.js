@@ -46,6 +46,7 @@ const MenuForm = () => {
   const [province, setProvince] = useState("")
   const [latLong, setLatLong] = useState([])
   const [travelFee, setTravelFee] = useState(0)
+  
 
   const handleGroupSize = e => {
     setGroupSize(e.target.value)
@@ -234,10 +235,10 @@ const MenuForm = () => {
       setTravelFee(0)
     }
   }, [address, province, latLong])
-
+// total cost
   useEffect(() => {
     setPrice(
-      (
+      ((
         children * 9.95 +
         infants * 1 +
         parseFloat(porkSteak) +
@@ -253,7 +254,8 @@ const MenuForm = () => {
         parseFloat(coffeeCharge) +
         parseFloat(flatwareCharge) +
         parseFloat(travelFee) +
-        (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0)
+        (groupSize && groupSize > 0 ? parseFloat(setupFee) : 0))
+        * 1.15 * 1.18
       ).toFixed(2)
     )
   }, [
@@ -695,20 +697,42 @@ const MenuForm = () => {
             hours x 2 x $50.00 <br />
           </p>
         </div>
+
+        {/* tax and gratuity */}
+        {/* <div className="flex items-center justify-between p-2 ">
+          <div className="flex flex-col md:flex-row items-center border justify-between">
+            <div className="w-full md:w-1/3">
+              <label htmlFor="gratuity" className="p-2 label">
+                18% Gratuity
+              </label>
+            </div>
+            <p className="p-2">${gratuity}</p>
+          </div>
+          <div className="flex flex-col md:flex-row items-center border justify-between">
+            <div className="w-full md:w-1/3">
+              <label htmlFor="tax" className="p-2 label">
+                HST
+              </label>
+            </div>
+            <p className="p-2">${tax}</p>
+          </div>
+        </div> */}
         {/* total */}
+
         <div className="mt-8 mb-4 flex items-center border justify-between">
           <label htmlFor="totalCost" className="p-2 text-xl">
             Total Cost
           </label>
           <p className="p-2 text-xl">${price}</p>
         </div>
+        {/* submit button */}
         <div className="flex justify-center">
           <p className="text-xs">
             Total Cost price displayed represents an initial estimate only based on the provided details. Final price will be
             calculated based on any additional requirements, and will be confirmed prior to request for payment after booking is finalized.
-            Any additional menu requests can be noted in the Service Request Form. 
-            Form.<br />
+            Any additional menu requests can be noted in the Service Request Form. <br />
             See <Link to="/menu">Menu page</Link> for additional menu options that may be available. <br />
+            Price includes 18% gratuity and 15% HST.
           </p>
         </div>
         <button
