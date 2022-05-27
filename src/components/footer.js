@@ -18,6 +18,7 @@ const footer = () => {
                 icon={faFacebookF}
                 style={{ height: `35px` }}
                 className="px-6 text-primary"
+                alt="facebook"
               />
             </a>
             <a
@@ -29,6 +30,7 @@ const footer = () => {
                 icon={faInstagram}
                 style={{ height: `35px` }}
                 className="px-6 text-primary"
+                alt="instagram"
               />
             </a>
           </div>
