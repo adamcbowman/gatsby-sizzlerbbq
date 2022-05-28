@@ -1,12 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import MapboxAutocomplete from "react-mapbox-autocomplete"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { useState } from "react"
-import { Link } from "gatsby"
+
 
 const MenuForm = () => {
   const [groupSize, setGroupSize] = useState(0)
@@ -153,18 +153,38 @@ const MenuForm = () => {
 
   const getFormDetailsText = () => {
 
-    let menu = 
-    `
-    Steak: ${steakQty} @$${steak},
-    Pork: ${porkSteakQty} @$${porkSteak},
-    Chicken: ${chickenQty} @$${chicken}, 
-    Salmon: ${salmonQty} @$${salmon},
-    Tofu Veg Kabob: ${vegKabobQty} @$${vegKabob}, 
-    Lobster: ${lobsterQty} @$${lobster},
-    Chicken/Pork: ${chickenPorkQty} @$${chickenPork},  
-    Roast Beef: ${roastBeefQty} @$${roastBeef},
-    Pig Roast: ${pigRoastQty} @$${pigRoast}, 
-    Desert: ${desert} @$${desertCharge},
+    let menu = ``
+    // Steak: ${steakQty} @$${steak},
+    // Pork: ${porkSteakQty} @$${porkSteak},
+    // Chicken: ${chickenQty} @$${chicken}, 
+    // Salmon: ${salmonQty} @$${salmon},
+    // Tofu Veg Kabob: ${vegKabobQty} @$${vegKabob}, 
+    // Lobster: ${lobsterQty} @$${lobster},
+    // Chicken/Pork: ${chickenPorkQty} @$${chickenPork},  
+    // Roast Beef: ${roastBeefQty} @$${roastBeef},
+    // Pig Roast: ${pigRoastQty} @$${pigRoast}, 
+
+    steakQty > 0 && (menu += `Steak: ${steakQty} @$${steak}, \n`)
+    //check if mushrooms/onions are selected on steak
+    document.getElementById("steak-mushrooms").checked &&
+      (menu += `w/ mushrooms, \n`)
+    document.getElementById("steak-onions").checked &&
+      (menu += `w/ onions, \n`)
+    porkSteakQty > 0 && (menu += `Pork: ${porkSteakQty} @$${porkSteak}, \n`)
+    chickenQty > 0 && (menu += `Chicken: ${chickenQty} @$${chicken}, \n`)
+    salmonQty > 0 && (menu += `Salmon: ${salmonQty} @$${salmon}, \n`)
+    vegKabobQty > 0 && (menu += `Tofu Veg Kabob: ${vegKabobQty} @$${vegKabob}, \n`)
+    lobsterQty > 0 && (menu += `Lobster: ${lobsterQty} @$${lobster}, \n`)
+    chickenPorkQty > 0 && (menu += `Chicken/Pork: ${chickenPorkQty} @$${chickenPork}, \n`)
+    roastBeefQty > 0 && (menu += `Roast Beef: ${roastBeefQty} @$${roastBeef}, \n`)
+    document.getElementById("roastbeef-mushrooms").checked &&
+      (menu += `w/ mushrooms, \n`)
+    document.getElementById("roastbeef-onions").checked &&
+      (menu += `w/ onions, \n`)
+    pigRoastQty > 0 && (menu += `Pig Roast: ${pigRoastQty} @$${pigRoast}, \n`)
+
+    menu += 
+   `Desert: ${desert} @$${desertCharge},
     Coffee: $${coffeeCharge},
     Flatware: ${flatware} @$${flatwareCharge}
     Setup Fee: $${setupFee},  
@@ -581,7 +601,6 @@ const MenuForm = () => {
             type="select"
             id="desert"
             className="p-2 input input-bordered input-primary"
-            defaultValue="Carrot Cake"
             onChange={handleDesert}
           >
             {/* TODO - setting both for pigroast/beef not working */}
@@ -628,7 +647,6 @@ const MenuForm = () => {
               type="select"
               id="flatware"
               className="p-2 input input-bordered input-primary w-full"
-              defaultValue="Royal"
               onChange={handleFlatware}
             >
               <option value="">Select</option>
@@ -694,8 +712,10 @@ const MenuForm = () => {
             <p className="p-2">${travelFee}</p>
           </div>
           <p className="text-xs">
-            Travel cost may apply. Travel cost from Moncton, NB or Turo, N.S. =
-            hours x 2 x $50.00 <br />
+            Travel cost may apply.  <br />
+            Travel estimates calculated for NS, PEI & NB only. <br />
+            Travel cost from Moncton, NB or Turo, N.S. =
+            hours x 2 x $50.00
           </p>
         </div>
 
