@@ -517,7 +517,7 @@ const MenuForm = () => {
             onChange={handleLobster}
             defaultValue={0}
           />
-          <p className="p-2">${lobster}</p>
+          <p className="p-2">${lobster} {lobster >0 ? `+ Lobster cost` : ''}</p>
         </div>
 
         {/* pig roast */}
